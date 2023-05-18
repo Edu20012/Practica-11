@@ -1,0 +1,186 @@
+Arboles de busqueda.
+Programar mediante POO en lenguaje C++ un  ́arbol de b ́usqueda, utilizando el pseudoc ́odigo
+que el profesor adjunt ́o. La clase  ́arbol debe estar programada utilizando plantillas, para que se
+puedan instanciar objetos del tipo  ́arbol que puedan guardar cualquier tipo de objetos. Ademas,
+en el c ́odigo generado, los nombres tanto de los m ́etodos, como de las variables, deben estar igual
+que como se encuentran en el pseudoćodigo.
+pseudocodigo.
+función: vacío
+recibe: árbol
+regresa: booleano
+¿árbol = NULO?
+Sí: devolver: verdadero
+No: devolver: falso
+función: recupera
+recibe: pos, árbol
+regresa: elemento
+¿árbol = NULO ó pos = NULO?
+Sí: ¡Error de excepción!
+Insuficiencia de datos
+Terminar
+No: devolver: pos→elem
+función: inserta
+recibe: elem, árbol
+regresa: nada
+¿árbol = NULO?
+Sí: aux = nuevo nodo
+aux→elem = elem
+árbol = aux
+No: ¿elem < árbol→elem?
+Sí: inserta(árbol→izq, elem)
+No: inserta(árbol→der, elem)
+función: localiza
+recibe: elem, árbol
+regresa: posición
+¿árbol = NULO?
+Sí: devolver NULO
+terminar
+No: ¿elem = árbol→elem?
+Sí: devolver: árbol
+No: ¿elem < árbol→elem
+Sí: devolver: localiza(elem, árbol→izq)
+No: devolver: localiza(elem, árbol→der)
+función: menor
+recibe: árbol
+regresa: posición
+¿árbol = NULO?
+Sí: devolver: NULO
+terminar
+No: ¿árbol→izq = NULO?
+Sí: devolver: árbol
+No: devolver: menor(árbol→izq)
+función: mayor
+recibe: árbol
+regresa: posición
+¿árbol = NULO?
+Sí: devolver: NULO
+terminar
+No: ¿árbol→der = NULO?
+Sí: devolver: árbol
+No: devolver: mayor(árbol→der)
+función: es_hoja
+recibe: árbol
+regresa: booleano
+¿árbol = NULO?
+Sí: devolver: falso
+¿árbol→izq = NULO y árbol→der = NULO?
+Sí: devolver: verdadero
+No:devolver: falso
+función: recorrido_preorder
+recibe: árbol
+regresa: nada
+¿árbol = NULO?
+Sí: terminar
+imprimir: árbol→elem
+recorrido_preorder(árbol→izq)
+recorrido_preorder(árbol→der)
+función: recorrido_inorder
+recibe: árbol
+regresa: nada
+¿árbol = NULO?
+Sí: terminar
+recorrido_inorder(árbol→izq)
+imprimir: árbol→elem
+recorrido_inorder(árbol→der)
+función: recorrido_postorder
+recibe: árbol
+regresa: nada
+¿árbol = NULO?
+Sí: terminar
+recorrido_postorder(árbol→izq)
+recorrido_postorder(árbol→der)
+imprimir: árbol→elem
+función: elimina
+recibe: pos, árbol
+regresa: nada
+¿árbol = NULO ó pos = NULO?
+Sí:Desplegar mensaje de error
+Terminar
+¿eshoja(árbol)?
+Sí: liberar árbol
+árbol = NULO
+No:¿árbol→izq ≠ NULO?
+Sí: pos_reemplazo = mayor(árbol→izq)
+No: pos_reemplazo = menor(árbol→der)
+árbol→elem = pos_reemplazo→elem
+elimina(pos_reemplazo, árbol)
+función: altura
+recibe: árbol
+regresa: entero
+¿árbol = NULO?
+Sí: devolver: 0
+No:alt_izq = altura(árbol→izq)
+alt_der = altura(árbol→der)
+¿alt_izq > alt_der?
+Sí: devolver: alt_izq + 1
+No: devolver: alt_der + 1
+función: fact_eq
+recibe: árbol
+regresa: entero
+¿árbol = NULO?
+Sí: devolver: 0
+No: devolver: altura(árbol→der) – altura(árbol→izq)
+función: balanceo
+recibe: árbol
+regresa: nada
+¿fact_eq(árbol) < –1?
+Sí: ¿fact_eq(árbol →izq) = –1?
+Sí: rot_sim_der(árbol)
+No: rot_dob_der(árbol)
+Terminar
+¿fact_eq(árbol) > 1?
+Sí: ¿fact_eq(árbol →izq) = 1?
+Sí: rot_sim_izq(árbol)
+No: rot_dob_izq(árbol)
+Terminar
+función: balanceo
+recibe: árbol
+regresa: nada
+¿fact_eq(árbol) < –1?
+Sí: ¿fact_eq(árbol →izq) = –1?
+Sí: rot_sim_der(árbol)
+No: rot_dob_der(árbol)
+Terminar
+¿fact_eq(árbol) > 1?
+Sí: ¿fact_eq(árbol →der) = 1?
+Sí: rot_sim_izq(árbol)
+No: rot_dob_izq(árbol)
+Terminar
+función: rot_sim_der
+recibe: árbol
+regresa: nada
+aux1 = árbol→izq
+aux2 = árbol→izq→der
+árbol→izq = aux2
+aux1→der = árbol
+árbol = aux1
+función: rot_sim_izq
+recibe: árbol
+regresa: nada
+aux1 = árbol→der
+aux2 = árbol→der→izq
+árbol→der = aux2
+aux1→izq = árbol
+árbol = aux1
+función: rot_dbl_der
+recibe: árbol
+regresa: nada
+aux1 = árbol→izq
+aux2 = aux1→der
+aux3 = aux2→izq
+aux4 = aux2→der
+árbol→izq = aux4
+aux1→der = aux3
+aux2→izq = aux1
+árbol = aux2
+función: rot_dbl_izq
+recibe: árbol
+regresa: nada
+aux1 = árbol→der
+aux2 = aux1→izq
+aux3 = aux2→der
+aux4 = aux2→izq
+árbol→der = aux4
+aux1→izq = aux3
+aux2→der = aux1
+árbol = aux2

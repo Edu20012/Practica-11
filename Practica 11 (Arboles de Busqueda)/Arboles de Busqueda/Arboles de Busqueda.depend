@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1684303430 source:d:\semestres carrera\semestre tres (parte 3)\seminario de estructura de datos 1\practicas (codigos)\practica 11 (arboles de busqueda)\arboles de busqueda\main.cpp
+	<iostream>
+	<string>
+	<stdexcept>
+
